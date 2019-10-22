@@ -4,19 +4,19 @@
 #include <sstream>
 using namespace std;
 
-class qqUserDGH;
-class mBlogUserDGH;
-class WeChatUserDGH;
-class GroupDGH;
-class qqGroupDGH;
-class mBlogGroupDGH;
-class WeChatGroupDGH;
-class qqUsersManagerDGH;
-class mBlogManagerDGH;
-class WeChatUsersManagerDGH;
-class personDGH;
+class qqUserXXX;
+class mBlogUserXXX;
+class WeChatUserXXX;
+class GroupXXX;
+class qqGroupXXX;
+class mBlogGroupXXX;
+class WeChatGroupXXX;
+class qqUsersManagerXXX;
+class mBlogManagerXXX;
+class WeChatUsersManagerXXX;
+class personXXX;
 
-class personDGH {
+class personXXX {
 private:
 	int qqid;//qq号，已经注册则与微博一致，否则为0
 	int mBlogid; //微博id，已经注册则与qq一致，否则为0
@@ -25,12 +25,12 @@ public:
 	void QQID(int i) { qqid = i; }
 	void MBLOGID(int i) { mBlogid = i; }
 	void WECHATID(int i) { Wechatid = i; }
-	qqUserDGH * returnqq();
-	mBlogUserDGH * returnmBlog();
-	WeChatUserDGH * returnwechat();
+	qqUserXXX * returnqq();
+	mBlogUserXXX * returnmBlog();
+	WeChatUserXXX * returnwechat();
 };
 
-class UserDGH { //用户
+class UserXXX { //用户
 protected:
 	int id; //Q号/微信ID （设置：qq10001+ 微信20000+）
 	string name; //昵称
@@ -40,7 +40,7 @@ protected:
 	int number_of_friends; //好友个数
 	int number_of_groups; //群个数
 public:
-	personDGH * person;//使用者
+	personXXX * person;//使用者
 	int ID() { return id; }//输出id
 	string Name() { return name; };
 	void modify();//修改个人信息
@@ -57,12 +57,12 @@ public:
 	virtual string write() = 0;
 };
 
-class qqUserDGH :public UserDGH { //qq用户
+class qqUserXXX :public UserXXX { //qq用户
 private:
-	qqUserDGH * friends[100]; //qq好友
-	qqGroupDGH * groups[30]; //qq群
+	qqUserXXX * friends[100]; //qq好友
+	qqGroupXXX * groups[30]; //qq群
 public:
-	qqUserDGH(int i, string n, int b, string p, int d);
+	qqUserXXX(int i, string n, int b, string p, int d);
 	void AddFriend(int xid);
 	void DeleteFriend(int xid);
 	void InGroup(int xid);
@@ -76,12 +76,12 @@ public:
 	string write();
 };
 
-class mBlogUserDGH :public UserDGH { //微博用户
+class mBlogUserXXX :public UserXXX { //微博用户
 private:
-	mBlogUserDGH * friends[100]; //微博好友
-	mBlogGroupDGH * groups[30]; //微博群
+	mBlogUserXXX * friends[100]; //微博好友
+	mBlogGroupXXX * groups[30]; //微博群
 public:
-	mBlogUserDGH(int i, string n, int b, string p, int d);
+	mBlogUserXXX(int i, string n, int b, string p, int d);
 	void AddFriend(int xid);
 	void DeleteFriend(int xid);
 	void InGroup(int xid);
@@ -95,12 +95,12 @@ public:
 	string write();
 };
 
-class WeChatUserDGH :public UserDGH { //微信用户
+class WeChatUserXXX :public UserXXX { //微信用户
 private:
-	WeChatUserDGH * friends[100]; //微信好友
-	WeChatGroupDGH * groups[30]; //微信群
+	WeChatUserXXX * friends[100]; //微信好友
+	WeChatGroupXXX * groups[30]; //微信群
 public:
-	WeChatUserDGH(int i, string n, int b, string p, int d);
+	WeChatUserXXX(int i, string n, int b, string p, int d);
 	void AddFriend(int xid);
 	void DeleteFriend(int xid);
 	void InGroup(int xid);
@@ -113,7 +113,7 @@ public:
 	string write();
 };
 
-class GroupDGH {
+class GroupXXX {
 protected:
 	int ID; //群号（1000+）
 	string name;//群名
@@ -131,15 +131,15 @@ public:
 	virtual string write2() = 0;
 };
 
-class qqGroupDGH :public GroupDGH {
+class qqGroupXXX :public GroupXXX {
 private:
-	qqUserDGH* GroupMembers[100]; //群员
-	qqUserDGH* Head; //群主
-	qqUserDGH* Managers[20]; //管理员
+	qqUserXXX* GroupMembers[100]; //群员
+	qqUserXXX* Head; //群主
+	qqUserXXX* Managers[20]; //管理员
 	int number_of_managers;
-	qqUserDGH* minigroupmembers[15];//临时讨论组
+	qqUserXXX* minigroupmembers[15];//临时讨论组
 public:
-	qqGroupDGH(int i, string n, int x1, int t);//建群，初始一个成员
+	qqGroupXXX(int i, string n, int x1, int t);//建群，初始一个成员
 	void Add(int xid);
 	void Kick(int xid);
 	void Show();
@@ -158,12 +158,12 @@ public:
 	string write3();
 };
 
-class mBlogGroupDGH :public GroupDGH {
+class mBlogGroupXXX :public GroupXXX {
 private:
-	mBlogUserDGH* GroupMembers[100]; //群员
-	mBlogUserDGH* Head; //群主
+	mBlogUserXXX* GroupMembers[100]; //群员
+	mBlogUserXXX* Head; //群主
 public:
-	mBlogGroupDGH(int i, string n, int x1, int t);//建群
+	mBlogGroupXXX(int i, string n, int x1, int t);//建群
 	void Add(int xid);
 	void Kick(int xid);
 	void Show();
@@ -175,12 +175,12 @@ public:
 	string write2();
 };
 
-class WeChatGroupDGH :public GroupDGH {
+class WeChatGroupXXX :public GroupXXX {
 private:
-	WeChatUserDGH* GroupMembers[100]; //群员
-	WeChatUserDGH* Head; //群主
+	WeChatUserXXX* GroupMembers[100]; //群员
+	WeChatUserXXX* Head; //群主
 public:
-	WeChatGroupDGH(int i, string n, int x1, int t);//建群
+	WeChatGroupXXX(int i, string n, int x1, int t);//建群
 	void Add(int xid);
 	void Kick(int xid);
 	void Show();
@@ -192,7 +192,7 @@ public:
 	string write2();
 };
 
-class UsersManagerDGH {
+class UsersManagerXXX {
 protected:
 	int number_of_users;
 	int number_of_groups;
@@ -222,17 +222,17 @@ public:
 	virtual string writetofile2() = 0;
 };
 
-class qqUsersManagerDGH : public UsersManagerDGH {
+class qqUsersManagerXXX : public UsersManagerXXX {
 private:
-	qqUserDGH* qqUsers[200];
-	qqGroupDGH* qqGroups[20];
+	qqUserXXX* qqUsers[200];
+	qqGroupXXX* qqGroups[20];
 public:
-	qqUsersManagerDGH();
+	qqUsersManagerXXX();
 	void Modify(int xid) { find(xid)->modify(); }
 	void AddUser(string n, int b, string p, int d);
 	void AddGroup(string n, int x1, int d);
-	qqUserDGH* find(int xid); //根据用户id返回指针
-	qqGroupDGH* find2(int xid); //根据群id返回指针
+	qqUserXXX* find(int xid); //根据用户id返回指针
+	qqGroupXXX* find2(int xid); //根据群id返回指针
 	void show(int xid) { qqUsers[xid - 10001]->Show(); }
 	void show2(int xid) { qqGroups[xid - 1001]->Show(); }
 	void showfriendlist(int xid) { qqUsers[xid - 10001]->Show_Friend(); }
@@ -253,8 +253,8 @@ public:
 	void Deleteminigroup(int gid) { find2(gid)->deleteminigroup(); }
 	bool Isinminigroup(int xid, int gid) { return find2(gid)->isinminigroup(xid); }
 	int Number_of_Members(int gid) { return find2(gid)->Number_of_members(); }
-	mBlogUserDGH * returnmBlog(int xid) { return find(xid)->person->returnmBlog(); }
-	WeChatUserDGH * returnWeChat(int xid) { return find(xid)->person->returnwechat(); }
+	mBlogUserXXX * returnmBlog(int xid) { return find(xid)->person->returnmBlog(); }
+	WeChatUserXXX * returnWeChat(int xid) { return find(xid)->person->returnwechat(); }
 	void changemblog(int qqid, int mbid) { find(qqid)->person->MBLOGID(mbid); }
 	void changewechat(int qqid, int wxid) { find(qqid)->person->WECHATID(wxid); }
 	void open(int xid);
@@ -265,17 +265,17 @@ public:
 	string writetofile2();
 };
 
-class mBlogManagerDGH : public UsersManagerDGH {
+class mBlogManagerXXX : public UsersManagerXXX {
 private:
-	mBlogUserDGH* mbUsers[200];
-	mBlogGroupDGH* mbGroups[20];
+	mBlogUserXXX* mbUsers[200];
+	mBlogGroupXXX* mbGroups[20];
 public:
-	mBlogManagerDGH();
+	mBlogManagerXXX();
 	void Modify(int xid) { find(xid)->modify(); }
 	void AddUser(string n, int b, string p, int d);
 	void AddGroup(string n, int x1, int d);
-	mBlogUserDGH* find(int xid); //根据用户id返回指针
-	mBlogGroupDGH* find2(int xid); //根据群id返回指针
+	mBlogUserXXX* find(int xid); //根据用户id返回指针
+	mBlogGroupXXX* find2(int xid); //根据群id返回指针
 	void show(int xid) { mbUsers[xid - 10001]->Show(); }
 	void show2(int xid) { mbGroups[xid - 1001]->Show(); }
 	void showfriendlist(int xid) { mbUsers[xid - 10001]->Show_Friend(); }
@@ -290,8 +290,8 @@ public:
 	bool isInGroup(int xid, int gid) { return find(xid)->IsInGroup(gid); }
 	bool isHead(int xid, int gid) { return find2(gid)->IsHead(xid); }
 	int Number_of_Members(int gid) { return find2(gid)->Number_of_members(); }
-	qqUserDGH * returnqq(int xid) { return find(xid)->person->returnqq(); }
-	WeChatUserDGH * returnWeChat(int xid) { return find(xid)->person->returnwechat(); }
+	qqUserXXX * returnqq(int xid) { return find(xid)->person->returnqq(); }
+	WeChatUserXXX * returnWeChat(int xid) { return find(xid)->person->returnwechat(); }
 	void changeqq(int mbid, int qqid) { find(mbid)->person->QQID(qqid); }
 	void changewechat(int mbid, int wxid) { find(mbid)->person->WECHATID(wxid); }
 	void open(int xid);
@@ -301,17 +301,17 @@ public:
 	string writetofile2();
 };
 
-class WeChatUsersManagerDGH : public UsersManagerDGH {
+class WeChatUsersManagerXXX : public UsersManagerXXX {
 private:
-	WeChatUserDGH* WeChatUsers[200];
-	WeChatGroupDGH* WeChatGroups[20];
+	WeChatUserXXX* WeChatUsers[200];
+	WeChatGroupXXX* WeChatGroups[20];
 public:
-	WeChatUsersManagerDGH();
+	WeChatUsersManagerXXX();
 	void Modify(int xid) { find(xid)->modify(); }
 	void AddUser(string n, int b, string p, int d);
 	void AddGroup(string n, int x1, int d);
-	WeChatUserDGH* find(int xid); //根据用户id返回指针
-	WeChatGroupDGH* find2(int xid); //根据群id返回指针
+	WeChatUserXXX* find(int xid); //根据用户id返回指针
+	WeChatGroupXXX* find2(int xid); //根据群id返回指针
 	void show(int xid) { WeChatUsers[xid - 20001]->Show(); }
 	void show2(int xid) { WeChatGroups[xid - 1001]->Show(); }
 	void showfriendlist(int xid) { WeChatUsers[xid - 20001]->Show_Friend(); }
@@ -326,8 +326,8 @@ public:
 	bool isInGroup(int xid, int gid) { return find(xid)->IsInGroup(gid); }
 	bool isHead(int xid, int gid) { return find2(gid)->IsHead(xid); }
 	int Number_of_Members(int gid) { return find2(gid)->Number_of_members(); }
-	qqUserDGH * returnqq(int xid) { return find(xid)->person->returnqq(); }
-	mBlogUserDGH * returnmBlog(int xid) { return find(xid)->person->returnmBlog(); } 
+	qqUserXXX * returnqq(int xid) { return find(xid)->person->returnqq(); }
+	mBlogUserXXX * returnmBlog(int xid) { return find(xid)->person->returnmBlog(); } 
 	void changeqq(int wxid, int qqid) { find(wxid)->person->QQID(qqid); }
 	void changemblog(int wxid, int mbid) { find(wxid)->person->MBLOGID(mbid); }
 	int makeqqgroup(int g1) { return find2(g1)->MakeQQGroup(); }
